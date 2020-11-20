@@ -1,4 +1,4 @@
-package festi;
+package festi.is.vall.com.au.AppliMobi;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-
-import festi.is.vall.com.au.AppliMobi.R;
 
 public class ShapeAdapter extends ArrayAdapter<Shape>
 {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="self.is.ccahill.com.au.shapelist">
+    package="festi.is.vall.com.au.AppliMobi">
 
     <application
         android:allowBackup="true"
@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="festi.is.vall.com.au.AppliMobi.DetailActivity"></activity>
+        <activity android:name="festi.is.vall.com.au.AppliMobi.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

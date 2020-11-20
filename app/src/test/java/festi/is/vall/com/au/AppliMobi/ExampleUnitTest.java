@@ -1,4 +1,4 @@
-package festi.is.vall.com.au.shapelist;
+package festi.is.vall.com.au.AppliMobi;
 
 import org.junit.Test;
 

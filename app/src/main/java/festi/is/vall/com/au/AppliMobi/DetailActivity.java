@@ -1,4 +1,4 @@
-package festi;
+package festi.is.vall.com.au.AppliMobi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import festi.is.vall.com.au.AppliMobi.R;
 
 public class DetailActivity extends AppCompatActivity
 {

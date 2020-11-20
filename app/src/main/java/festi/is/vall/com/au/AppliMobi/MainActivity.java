@@ -1,4 +1,4 @@
-package festi;
+package festi.is.vall.com.au.AppliMobi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,6 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
-
-import festi.is.vall.com.au.AppliMobi.R;
 
 public class MainActivity extends AppCompatActivity
 {
