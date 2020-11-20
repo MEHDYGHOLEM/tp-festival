@@ -20,16 +20,17 @@ public class MainActivity extends AppCompatActivity
     public static ArrayList<Festival_info> shapeList = new ArrayList<Festival_info>();
 
     private ListView listView;
-    private Button allButton;
+
+    /*private Button allButton;
     private Button jeudiButton;
     private Button mercrediButton;
     private Button acoutsiqueButton;
-    private Button emplifierButton;
+    private Button emplifierButton;*/
 
 
 
-    private String selectedFilter = "all";
-    private String currentcherchetext = "";
+   //  private String selectedFilter = "all";
+    //private String currentcherchetext = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,10 +42,11 @@ public class MainActivity extends AppCompatActivity
         initSearchWidgets();
         setUpList();
         setUpOnclickListener();
-        initFilterwidgets();
+       // initFilterwidgets();
 
 
     }
+    /*
     private  void  initFilterwidgets()
     {
         Button allButton = (Button) findViewById(R.id.allFilter);
@@ -52,38 +54,40 @@ public class MainActivity extends AppCompatActivity
         Button mercrediButton = (Button) findViewById(R.id.VendrediFilter);
         Button acoustiqueButton = (Button) findViewById(R.id.acoustiqueFilter);
         Button emplifierButton = (Button) findViewById(R.id.emplifierFilter);
-    }
+    }*/
     private void initSearchWidgets()
     {
         SearchView searchView = (SearchView) findViewById(R.id.shapeListeSearchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public boolean onQueryTextSubmit(String s)
+
+            {
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String newText)
+            public boolean onQueryTextChange(String s)
             {
                 ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
                 for (Festival_info shape: shapeList)
                 {
-                    if(shape.getjour().toLowerCase().contains(newText.toLowerCase()))
+                    if(shape.getjour().toLowerCase().contains(s.toLowerCase()))
                     {
-                        if ( selectedFilter.equals("all"))
-                        {
+                       // if ( selectedFilter.equals("all"))
+                       // {
                             filterfestival.add(shape);
-                        }
+                       // }
                     }
-                    {
-                        filterfestival.add(shape);
-                    }
+                   // {
+                        //filterfestival.add(shape);
+                   // }
 
                         {
-                        if (shape.getjour().toLowerCase().contains(selectedFilter))
-                        {
-                            filterfestival.add(shape);
-                        }
+                      // if (shape.getjour().toLowerCase().contains(selectedFilter))
+                       // {
+                        //    filterfestival.add(shape);
+                       // }
                     }
                 }
 
@@ -96,19 +100,19 @@ public class MainActivity extends AppCompatActivity
 // les noms des festivals ***********************************************************************************************
     private void setupData()
     {
-        Festival_info fest1 = new Festival_info("0", "MUSILAC", "Soleil, lac et musique : rendez-vous du 11 au 14 juillet à Aix-les-Bains","Jeudi","Acoustique", R.drawable.circle);
+        Festival_info fest1 = new Festival_info("0", "MUSILAC", "Aix-les-Bains","Jeudi","Acoustique", R.drawable.circle);
         shapeList.add(fest1);
 
-        Festival_info fest2 = new Festival_info("1","ALIMENTERRE","","jeudi","", R.drawable.octagon);
+        Festival_info fest2 = new Festival_info("1","ALIMENTERRE","hello word","Vendredi","Acoustique", R.drawable.octagon);
         shapeList.add(fest2);
 
-        Festival_info fest3 = new Festival_info("2"," NEW ORLEANS","" ,"","",R.drawable.rectangle);
+        Festival_info fest3 = new Festival_info("2"," NEW ORLEANS","" ,"Jeudi","Emplifier",R.drawable.rectangle);
         shapeList.add(fest3);
 
-        Festival_info fest4 = new Festival_info("3","FOLKS BLUES","" ,"jeudi","",R.drawable.square);
+        Festival_info fest4 = new Festival_info("3","FOLKS BLUES","" ,"Vendredi","Emplifier",R.drawable.square);
         shapeList.add(fest4);
 
-        Festival_info fest5 = new Festival_info("4","festival 5","","vendredi","", R.drawable.octagon);
+        Festival_info fest5 = new Festival_info("4","festival 5","","","", R.drawable.octagon);
         shapeList.add(fest5);
 
         Festival_info fest6 = new Festival_info("5", "festival 6","","" ,"",R.drawable.circle);
@@ -123,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         Festival_info fest9 = new Festival_info("8","festival 9","" ,"","",R.drawable.rectangle);
         shapeList.add(fest9);
 
-        Festival_info fest10 = new Festival_info("9","Triangle","" ,"","",R.drawable.octagon);
+        Festival_info fest10 = new Festival_info("9","festival 10","" ,"","",R.drawable.octagon);
         shapeList.add(fest10);
     }
 
@@ -151,9 +155,10 @@ public class MainActivity extends AppCompatActivity
     }
 // filter les recherches // créer une boucle pour filter tout les festival
 
-    private void filterliste(String status)
+    private void filterliste(String status,String status2)
     {
-        selectedFilter = status;
+        //selectedFilter = status;
+       // selectedFilter = status2;
 
         ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
         for (Festival_info shape: shapeList)
@@ -163,6 +168,11 @@ public class MainActivity extends AppCompatActivity
                filterfestival.add(shape);
 
             }
+          /* if(shape.getjour().toLowerCase().contains(status2))
+            {
+                filterfestival.add(shape);
+
+            }*/
     }
         FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,filterfestival);
         listView.setAdapter(adapter);
@@ -170,7 +180,7 @@ public class MainActivity extends AppCompatActivity
 
     public void allFilterTapped(View view)
     {
-        filterliste( "all ");
+        filterliste( "all ","all");
         FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,shapeList);
         listView.setAdapter(adapter);
     }
@@ -178,23 +188,27 @@ public class MainActivity extends AppCompatActivity
 
     public void JeudiFilterTapped(View view)
     {
-        filterliste( "jeudi");
+        filterliste( "jeudi","vendredi") ;
+       // filterliste( "vendredi","Acoustique") ;
+
 
     }
 
     public void VendrediFilterTapped(View view)
-    {
-        filterliste( "Vendredi");
-    }
 
-    public void acoustiqueFilterTapped(View view)
     {
-        filterliste( "acoustique");
+        filterliste( "vendredi","Acoustique") ;
 
     }
 
-    public void circleFilterTapped(View view)
+  /*  public void acoustiqueFilterTapped(View view)
     {
-        filterliste( "circle");
-    }
+        filterliste( "acoustique","Emplifie");
+
+    }*/
+
+  /*  public void circleFilterTapped(View view)
+    {
+        filterliste( "Jeudi","");
+    }*/
 }
