@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+   <SearchView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/shapeListeSearchView"
+       android:iconifiedByDefault="false"
+       android:queryHint=" Rechercher ">
+
+   </SearchView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="Tout"
+        android:id="@+id/allFilter"
+        android:background="@color/colorPrimary"
+        android:onClick="allFilterTapped">
+
+    </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Jeudi"
+            android:id="@+id/jeudiFilter"
+            android:background="@color/colorPrimary"
+            android:onClick="JeudiFilterTapped">
+
+        </Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Vendredi"
+            android:id="@+id/VendrediFilter"
+            android:background="@color/colorPrimary"
+            android:onClick="VendrediFilterTapped">
+
+        </Button>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="octagone"
+            android:id="@+id/octagonFilter"
+            android:background="@color/colorPrimary"
+            android:onClick="octagonFilterTapped">
+
+        </Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="amplifieé"
+            android:id="@+id/circleFilter"
+            android:background="@color/colorPrimary"
+            android:onClick="circleFilterTapped">
+
+        </Button>
+</LinearLayout>
+
+
+
+
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/shapesListView"/>
+</LinearLayout>

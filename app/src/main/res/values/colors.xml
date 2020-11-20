@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#40A497</color>
+    <color name="colorPrimaryDark">#A4405B</color>
+    // couleur de les ecritures
+    <color name="colorAccent"></color>
+</resources>
