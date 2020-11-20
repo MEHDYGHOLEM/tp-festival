@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:id="@+id/shapeName"
+        android:id="@+id/Nomfest"
         android:gravity="center_vertical"
         android:text="shape name"
         android:textColor="@color/colorPrimary"

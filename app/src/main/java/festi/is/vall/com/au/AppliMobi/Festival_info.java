@@ -1,6 +1,6 @@
 package festi.is.vall.com.au.AppliMobi;
 
-class Shape
+class Festival_info
 {
     private String id;
     private String name;
@@ -9,7 +9,9 @@ class Shape
     private String scene;
     private int image;
 
-    public Shape(String id, String name,String info,String jour,String scene, int image) {
+// les informations de fistival
+
+    public Festival_info(String id, String name, String info, String jour, String scene, int image) {
         this.id = id;
         this.name = name;
         this.image = image;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity
 {
-    Shape selectedShape;
+    Festival_info selectedShape;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +30,7 @@ public class DetailActivity extends AppCompatActivity
 
     private void setValues()
     {
-        TextView tv = (TextView) findViewById(R.id.shapeName);
+        TextView tv = (TextView) findViewById(R.id.Nomfest);
         TextView tv1 = (TextView) findViewById(R.id.TextDetail);
         TextView tv2 = (TextView) findViewById(R.id.textviewJour);
         TextView tv3 = (TextView) findViewById(R.id.textviewScene);

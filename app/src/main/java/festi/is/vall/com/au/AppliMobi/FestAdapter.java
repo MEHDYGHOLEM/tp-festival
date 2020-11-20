@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ShapeAdapter extends ArrayAdapter<Shape>
+public class FestAdapter extends ArrayAdapter<Festival_info>
 {
 
-    public ShapeAdapter(Context context, int resource, List<Shape> shapeList)
+    public FestAdapter(Context context, int resource, List<Festival_info> shapeList)
     {
         super(context,resource,shapeList);
     }
@@ -22,7 +22,7 @@ public class ShapeAdapter extends ArrayAdapter<Shape>
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        Shape shape = getItem(position);
+        Festival_info shape = getItem(position);
 
         if(convertView == null)
         {

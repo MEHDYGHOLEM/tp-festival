@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -14,11 +15,21 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
 
-    public static ArrayList<Shape> shapeList = new ArrayList<Shape>();
+
+
+    public static ArrayList<Festival_info> shapeList = new ArrayList<Festival_info>();
 
     private ListView listView;
+    private Button allButton;
+    private Button jeudiButton;
+    private Button mercrediButton;
+    private Button acoutsiqueButton;
+    private Button emplifierButton;
+
+
 
     private String selectedFilter = "all";
+    private String currentcherchetext = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,10 +41,18 @@ public class MainActivity extends AppCompatActivity
         initSearchWidgets();
         setUpList();
         setUpOnclickListener();
+        initFilterwidgets();
 
 
     }
-
+    private  void  initFilterwidgets()
+    {
+        Button allButton = (Button) findViewById(R.id.allFilter);
+        Button jeudiButton = (Button) findViewById(R.id.jeudiFilter);
+        Button mercrediButton = (Button) findViewById(R.id.VendrediFilter);
+        Button acoustiqueButton = (Button) findViewById(R.id.acoustiqueFilter);
+        Button emplifierButton = (Button) findViewById(R.id.emplifierFilter);
+    }
     private void initSearchWidgets()
     {
         SearchView searchView = (SearchView) findViewById(R.id.shapeListeSearchView);
@@ -46,16 +65,29 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextChange(String newText)
             {
-                ArrayList<Shape> filteredShape = new ArrayList<Shape>();
-                for (Shape shape: shapeList)
+                ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
+                for (Festival_info shape: shapeList)
                 {
-                    if(shape.getName().toLowerCase().contains(newText.toLowerCase()))
+                    if(shape.getjour().toLowerCase().contains(newText.toLowerCase()))
                     {
-                        filteredShape.add(shape);
+                        if ( selectedFilter.equals("all"))
+                        {
+                            filterfestival.add(shape);
+                        }
+                    }
+                    {
+                        filterfestival.add(shape);
+                    }
+
+                        {
+                        if (shape.getjour().toLowerCase().contains(selectedFilter))
+                        {
+                            filterfestival.add(shape);
+                        }
                     }
                 }
 
-                ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(),0 ,filteredShape);
+                FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,filterfestival);
                 listView.setAdapter(adapter);
                 return false;
             }
@@ -64,42 +96,42 @@ public class MainActivity extends AppCompatActivity
 // les noms des festivals ***********************************************************************************************
     private void setupData()
     {
-        Shape circle = new Shape("0", "MUSILAC", "Soleil, lac et musique : rendez-vous du 11 au 14 juillet à Aix-les-Bains","Jeudi","Acoustique", R.drawable.circle);
-        shapeList.add(circle);
+        Festival_info fest1 = new Festival_info("0", "MUSILAC", "Soleil, lac et musique : rendez-vous du 11 au 14 juillet à Aix-les-Bains","Jeudi","Acoustique", R.drawable.circle);
+        shapeList.add(fest1);
 
-        Shape triangle = new Shape("1","ALIMENTERRE","","","", R.drawable.octagon);
-        shapeList.add(triangle);
+        Festival_info fest2 = new Festival_info("1","ALIMENTERRE","","jeudi","", R.drawable.octagon);
+        shapeList.add(fest2);
 
-        Shape square = new Shape("2"," NEW ORLEANS","" ,"","",R.drawable.rectangle);
-        shapeList.add(square);
+        Festival_info fest3 = new Festival_info("2"," NEW ORLEANS","" ,"","",R.drawable.rectangle);
+        shapeList.add(fest3);
 
-        Shape rectangle = new Shape("3","FOLKS BLUES","" ,"","",R.drawable.square);
-        shapeList.add(rectangle);
+        Festival_info fest4 = new Festival_info("3","FOLKS BLUES","" ,"jeudi","",R.drawable.square);
+        shapeList.add(fest4);
 
-        Shape octagon = new Shape("4","festival 5","","","", R.drawable.octagon);
-        shapeList.add(octagon);
+        Festival_info fest5 = new Festival_info("4","festival 5","","vendredi","", R.drawable.octagon);
+        shapeList.add(fest5);
 
-        Shape circle2 = new Shape("5", "festival 6","","" ,"",R.drawable.circle);
-        shapeList.add(circle2);
+        Festival_info fest6 = new Festival_info("5", "festival 6","","" ,"",R.drawable.circle);
+        shapeList.add(fest6);
 
-        Shape triangle2 = new Shape("6","BEAUGRENELLE","","","", R.drawable.triangle);
-        shapeList.add(triangle2);
+        Festival_info fest7 = new Festival_info("6","BEAUGRENELLE","","","", R.drawable.triangle);
+        shapeList.add(fest7);
 
-        Shape square2 = new Shape("7","festival 8","", "","",R.drawable.square);
-        shapeList.add(square2);
+        Festival_info fest8 = new Festival_info("7","festival 8","", "","",R.drawable.square);
+        shapeList.add(fest8);
 
-        Shape rectangle2 = new Shape("8","festival 9","" ,"","",R.drawable.rectangle);
-        shapeList.add(rectangle2);
+        Festival_info fest9 = new Festival_info("8","festival 9","" ,"","",R.drawable.rectangle);
+        shapeList.add(fest9);
 
-        Shape octagon2 = new Shape("9","Triangle","" ,"","",R.drawable.octagon);
-        shapeList.add(octagon2);
+        Festival_info fest10 = new Festival_info("9","Triangle","" ,"","",R.drawable.octagon);
+        shapeList.add(fest10);
     }
 
     private void setUpList()
     {
         listView = (ListView) findViewById(R.id.shapesListView);
 
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), 0, shapeList);
+        FestAdapter adapter = new FestAdapter(getApplicationContext(), 0, shapeList);
         listView.setAdapter(adapter);
     }
 
@@ -109,7 +141,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
             {
-                Shape selectShape = (Shape) (listView.getItemAtPosition(position));
+                Festival_info selectShape = (Festival_info) (listView.getItemAtPosition(position));
                 Intent showDetail = new Intent(getApplicationContext(), DetailActivity.class);
                 showDetail.putExtra("id",selectShape.getId());
                 startActivity(showDetail);
@@ -117,35 +149,36 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
+// filter les recherches // créer une boucle pour filter tout les festival
 
     private void filterliste(String status)
     {
         selectedFilter = status;
 
-        ArrayList<Shape> filteredShape = new ArrayList<Shape>();
-        for (Shape shape: shapeList)
+        ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
+        for (Festival_info shape: shapeList)
         {
-            if(shape.getName().toLowerCase().contains(status))
+            if(shape.getjour().toLowerCase().contains(status))
             {
-               filteredShape.add(shape);
-                // filteredShape.add(shape);
+               filterfestival.add(shape);
+
             }
     }
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(),0 ,filteredShape);
+        FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,filterfestival);
         listView.setAdapter(adapter);
     }
 
     public void allFilterTapped(View view)
     {
-        filterliste( "Tout les groupe ");
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(),0 ,shapeList);
+        filterliste( "all ");
+        FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,shapeList);
         listView.setAdapter(adapter);
     }
-
+    //créer une boucle pour une filtration personnalisée
 
     public void JeudiFilterTapped(View view)
     {
-        filterliste( "festival_jeudi");
+        filterliste( "jeudi");
 
     }
 
@@ -154,9 +187,9 @@ public class MainActivity extends AppCompatActivity
         filterliste( "Vendredi");
     }
 
-    public void octagonFilterTapped(View view)
+    public void acoustiqueFilterTapped(View view)
     {
-        filterliste( "octagon");
+        filterliste( "acoustique");
 
     }
 

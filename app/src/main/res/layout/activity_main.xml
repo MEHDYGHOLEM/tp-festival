@@ -68,10 +68,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="octagone"
-            android:id="@+id/octagonFilter"
+            android:text="acoustique"
+            android:id="@+id/acoustiqueFilter"
             android:background="@color/colorPrimary"
-            android:onClick="octagonFilterTapped">
+            android:onClick="acoustiqueFilterTapped">
 
         </Button>
 
@@ -80,7 +80,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="amplifieé"
-            android:id="@+id/circleFilter"
+            android:id="@+id/emplifierFilter"
             android:background="@color/colorPrimary"
             android:onClick="circleFilterTapped">
 
