@@ -21,17 +21,6 @@ public class MainActivity extends AppCompatActivity
 
     private ListView listView;
 
-    /*private Button allButton;
-    private Button jeudiButton;
-    private Button mercrediButton;
-    private Button acoutsiqueButton;
-    private Button emplifierButton;*/
-
-
-
-   //  private String selectedFilter = "all";
-    //private String currentcherchetext = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -42,19 +31,7 @@ public class MainActivity extends AppCompatActivity
         initSearchWidgets();
         setUpList();
         setUpOnclickListener();
-       // initFilterwidgets();
-
-
     }
-    /*
-    private  void  initFilterwidgets()
-    {
-        Button allButton = (Button) findViewById(R.id.allFilter);
-        Button jeudiButton = (Button) findViewById(R.id.jeudiFilter);
-        Button mercrediButton = (Button) findViewById(R.id.VendrediFilter);
-        Button acoustiqueButton = (Button) findViewById(R.id.acoustiqueFilter);
-        Button emplifierButton = (Button) findViewById(R.id.emplifierFilter);
-    }*/
     private void initSearchWidgets()
     {
         SearchView searchView = (SearchView) findViewById(R.id.shapeListeSearchView);
@@ -74,20 +51,12 @@ public class MainActivity extends AppCompatActivity
                 {
                     if(shape.getjour().toLowerCase().contains(s.toLowerCase()))
                     {
-                       // if ( selectedFilter.equals("all"))
-                       // {
                             filterfestival.add(shape);
-                       // }
                     }
-                   // {
-                        //filterfestival.add(shape);
-                   // }
 
-                        {
-                      // if (shape.getjour().toLowerCase().contains(selectedFilter))
-                       // {
-                        //    filterfestival.add(shape);
-                       // }
+                    if(shape.getScene().toLowerCase().contains(s.toLowerCase()))
+                    {
+                        filterfestival.add(shape);
                     }
                 }
 
@@ -124,10 +93,10 @@ public class MainActivity extends AppCompatActivity
         Festival_info fest8 = new Festival_info("7","festival 8","", "","",R.drawable.square);
         shapeList.add(fest8);
 
-        Festival_info fest9 = new Festival_info("8","festival 9","" ,"","",R.drawable.rectangle);
+        Festival_info fest9 = new Festival_info("8","festival 9","" ,"Jeudi","",R.drawable.rectangle);
         shapeList.add(fest9);
 
-        Festival_info fest10 = new Festival_info("9","festival 10","" ,"","",R.drawable.octagon);
+        Festival_info fest10 = new Festival_info("9","festival 10","" ,"lundi","",R.drawable.octagon);
         shapeList.add(fest10);
     }
 
@@ -155,11 +124,9 @@ public class MainActivity extends AppCompatActivity
     }
 // filter les recherches // créer une boucle pour filter tout les festival
 
-    private void filterliste(String status,String status2)
-    {
-        //selectedFilter = status;
-       // selectedFilter = status2;
+    private void filterliste(String status)
 
+    {
         ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
         for (Festival_info shape: shapeList)
         {
@@ -168,11 +135,6 @@ public class MainActivity extends AppCompatActivity
                filterfestival.add(shape);
 
             }
-          /* if(shape.getjour().toLowerCase().contains(status2))
-            {
-                filterfestival.add(shape);
-
-            }*/
     }
         FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,filterfestival);
         listView.setAdapter(adapter);
@@ -180,7 +142,7 @@ public class MainActivity extends AppCompatActivity
 
     public void allFilterTapped(View view)
     {
-        filterliste( "all ","all");
+        filterliste( "all");
         FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,shapeList);
         listView.setAdapter(adapter);
     }
@@ -188,27 +150,28 @@ public class MainActivity extends AppCompatActivity
 
     public void JeudiFilterTapped(View view)
     {
-        filterliste( "jeudi","vendredi") ;
-       // filterliste( "vendredi","Acoustique") ;
-
-
+        filterliste( "jeudi") ;
     }
-
     public void VendrediFilterTapped(View view)
 
     {
-        filterliste( "vendredi","Acoustique") ;
+        filterliste( "vendredi") ;
 
     }
 
-  /*  public void acoustiqueFilterTapped(View view)
-    {
-        filterliste( "acoustique","Emplifie");
+    public void AcoustiqueFilterTapped(View view)
 
-    }*/
-
-  /*  public void circleFilterTapped(View view)
     {
-        filterliste( "Jeudi","");
-    }*/
+        filterliste( "") ;
+
+    }
+
+    public void EmplifierFilterTapped(View view)
+
+    {
+        filterliste( "") ;
+    }
+
+
+
 }

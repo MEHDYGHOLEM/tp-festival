@@ -71,7 +71,7 @@
             android:text="acoustique"
             android:id="@+id/acoustiqueFilter"
             android:background="@color/colorPrimary"
-            android:onClick="acoustiqueFilterTapped">
+            android:onClick="AcoustiqueFilterTapped">
 
         </Button>
 
@@ -82,7 +82,7 @@
             android:text="amplifieé"
             android:id="@+id/emplifierFilter"
             android:background="@color/colorPrimary"
-            android:onClick="circleFilterTapped">
+            android:onClick="EmplifierFilterTapped">
 
         </Button>
 </LinearLayout>
