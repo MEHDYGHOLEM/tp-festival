@@ -19,7 +19,10 @@ public class MainActivity extends AppCompatActivity
 
     public static ArrayList<Festival_info> shapeList = new ArrayList<Festival_info>();
 
-    private ListView listView;
+     private ListView listView;
+     private String selectedFilter = "all";
+   // private String selectedFilter2 = "all";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,15 +52,12 @@ public class MainActivity extends AppCompatActivity
                 ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
                 for (Festival_info shape: shapeList)
                 {
-                    if(shape.getjour().toLowerCase().contains(s.toLowerCase()))
+                    if(shape.getName().toLowerCase().contains(s.toLowerCase()))
                     {
                             filterfestival.add(shape);
                     }
 
-                    if(shape.getScene().toLowerCase().contains(s.toLowerCase()))
-                    {
-                        filterfestival.add(shape);
-                    }
+
                 }
 
                 FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,filterfestival);
@@ -124,15 +124,23 @@ public class MainActivity extends AppCompatActivity
     }
 // filter les recherches // créer une boucle pour filter tout les festival
 
-    private void filterliste(String status)
-
+    private void filterliste(String status)//, String status2)
     {
+        selectedFilter = status;
+      //  selectedFilter2 = status2;
+
+
+
         ArrayList<Festival_info> filterfestival = new ArrayList<Festival_info>();
         for (Festival_info shape: shapeList)
         {
             if(shape.getjour().toLowerCase().contains(status))
             {
                filterfestival.add(shape);
+            }
+            if(shape.getScene().toLowerCase().contains(status))
+            {
+                filterfestival.add(shape);
 
             }
     }
@@ -142,8 +150,8 @@ public class MainActivity extends AppCompatActivity
 
     public void allFilterTapped(View view)
     {
-        filterliste( "all");
-        FestAdapter adapter = new FestAdapter(getApplicationContext(),0 ,shapeList);
+       filterliste( "all");
+        FestAdapter adapter = new FestAdapter(getApplicationContext(),1 ,shapeList);
         listView.setAdapter(adapter);
     }
     //créer une boucle pour une filtration personnalisée
@@ -162,14 +170,14 @@ public class MainActivity extends AppCompatActivity
     public void AcoustiqueFilterTapped(View view)
 
     {
-        filterliste( "") ;
+       filterliste( "acoustique") ;
 
     }
 
     public void EmplifierFilterTapped(View view)
 
     {
-        filterliste( "") ;
+       filterliste( "emplifier") ;
     }
 
 

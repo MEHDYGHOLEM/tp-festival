@@ -32,6 +32,7 @@ public class FestAdapter extends ArrayAdapter<Festival_info>
         ImageView iv = (ImageView) convertView.findViewById(R.id.shapeImage);
 
         tv.setText(shape.getName());
+
         iv.setImageResource(shape.getImage());
 
 
